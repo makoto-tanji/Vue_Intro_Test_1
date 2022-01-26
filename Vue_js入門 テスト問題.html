@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js入門 テスト問題</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>ToDoアプリ</h1>
+    <div class="task-container">
+      <label for="task">タスク名：</label>
+      <input type="text" name="taskname" id="taskname" v-model="taskname">
+    </div>
+    <div class="time-container">
+      <label for="time">推定時間（分）：</label>
+      <input type="number" name="tasktime" id="tasktime" v-model="tasktime">
+    </div>
+    <button @click="addTask">追加</button>
+    <div class="task-list">
+      <table>
+        <tr>
+          <th>タスク</th>
+          <th>推定時間（分）</th>
+        </tr>
+      </table>
+      <div v-for="task in tasks" >
+        <!-- <p>{{task.name}} {{task.time}}</p> -->
+        <task-component :task='task'></task-component>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    Vue.component('task-component', {
+      props: {
+        task:{
+          type: Object
+        }
+      },
+      template: '<p>{{task.name}}{{task.time}}</p>'
+    })
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          taskname:'',
+          tasktime: '',
+          tasks:[
+            {
+              name: '予習',
+              time: '30分',
+            },
+            {
+              name: '学習',
+              time: '40分',
+            },
+            {
+              name: '復習',
+              time: '50分',
+            },
+          ],
+        }
+      }, //end data
+      methods:{
+        addTask(){
+          this.tasks.push(
+            {
+              name: this.taskname,
+              time: this.tasktime + '分',
+            }
+          )
+        }
+      } //end methods
+    });
+  </script>
+</body>
+
+</html>

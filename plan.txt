@@ -1,0 +1,63 @@
+**************************************************
+要件
+
+・タスクの追加
+・タスクを完了する推定時間の追加
+・コンポーネントを1つ以上作成すること
+・propsを使用すること
+親コンポーネントから子コンポーネントへデータを渡す
+
+----------------------------------------
+タスクのデータは
+taskname
+tasktime
+の2つのプロパティを持つオブジェクトの配列
+ tasks:[
+  {
+    name: '予習',
+    time: '30分',
+  },
+  {
+    name: '学習',
+    time: '40分',
+  },
+]
+
+
+----------------------------------------
+
+----------------------------------------
+
+
+**************************************************
+できなかったこと
+
+----------------------------------------
+テーブル内に表示
+
+<!-- vue.js:634 [Vue warn]: Property or method "task" is not defined on the instance but referenced during render. Make sure -->
+<!-- that this property is reactive, either in the data option, or for class-based components, by initializing the property. -->
+<!-- See: https://vuejs.org/v2/guide/reactivity.html#Declaring-Reactive-Properties. -->
+
+<!-- vue.js:634 [Vue warn]: Error in render: "TypeError: Cannot read properties of undefined (reading 'name')" -->
+<!-- vue.js:1906 TypeError: Cannot read properties of undefined (reading 'name') -->
+
+<!-- <tr>
+  <div v-for="task in tasks">
+    <td>{{ task.name }}</td>
+    <td>{{ task.time }}</td>
+  </div>
+</tr> -->
+
+----------------------------------------
+エラー
+
+Invalid prop: type check failed for prop "task". Expected String, String, got Object 
+----------------------------------------
+エラー
+
+ :task='task'>
+ に黄波線
+
+
+**************************************************
